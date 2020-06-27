@@ -85,6 +85,14 @@
                       <value>${project.basedir}/src/main/resources/db/migration</value>
                     </property>
                   </properties>
+                  <forcedTypes>
+                    <forcedType>
+                      <userType>com.byt.zus.dao.FileStatusEnum</userType>
+                      <enumConverter>true</enumConverter>
+                      <includeExpression>^.*(file_status)\.name</includeExpression>
+                      <includeTypes>.*</includeTypes>
+                    </forcedType>
+                  </forcedTypes>
                 </database>
                 <generate>
                   <deprecated>false</deprecated>
