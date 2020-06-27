@@ -1,6 +1,6 @@
 package com.byt.zus.dao;
 
-public enum FileStatusEnum {
+public enum FileStatus {
 
   NEW,
   SUBMITTED,

@@ -7,5 +7,5 @@ spring:
     username: root
     password: toor
   jooq:
-    sql-dialect: mysql
+    sql-dialect: h2
 

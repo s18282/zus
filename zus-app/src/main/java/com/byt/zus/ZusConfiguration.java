@@ -1,7 +1,7 @@
 package com.byt.zus;
 
 import com.byt.zus.repository.UserRepository;
-import com.byt.zus.service.UserService;
+import com.byt.zus.repository.WorkflowStepRepository;
 import org.jooq.impl.DefaultDSLContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +16,8 @@ public class ZusConfiguration {
   }
 
   @Bean
-  UserService userService(final UserRepository userRepository) {
+  WorkflowStepRepository workflowStepRepository(final DefaultDSLContext dsl) {
 
-    return new UserService(userRepository);
+    return new WorkflowStepRepository(dsl);
   }
 }

@@ -87,9 +87,9 @@
                   </properties>
                   <forcedTypes>
                     <forcedType>
-                      <userType>com.byt.zus.dao.FileStatusEnum</userType>
+                      <userType>com.byt.zus.dao.FileStatus</userType>
                       <enumConverter>true</enumConverter>
-                      <includeExpression>^.*(file_status)\.name</includeExpression>
+                      <includeExpression>^.*(workflow_step)\.file_status</includeExpression>
                       <includeTypes>.*</includeTypes>
                     </forcedType>
                   </forcedTypes>
