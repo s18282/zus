@@ -3,7 +3,7 @@ package com.byt.zus.util;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class User {
+public class UserUtils {
 
     public static String getCurrentUserUsername() {
 
