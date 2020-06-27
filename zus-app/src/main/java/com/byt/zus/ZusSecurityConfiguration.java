@@ -31,6 +31,7 @@ public class ZusSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .authorizeRequests()
                 .anyRequest()
@@ -42,6 +43,7 @@ public class ZusSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     PasswordEncoder passwordEncoder() {
+        
         return new BCryptPasswordEncoder();
     }
 
