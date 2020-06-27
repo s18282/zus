@@ -12,11 +12,6 @@ public class User {
                 .getAuthentication()
                 .getPrincipal();
 
-        if (principal instanceof UserDetails) {
-            return ((UserDetails) principal).getUsername();
-        } else {
-            return principal.toString();
-        }
+        return principal instanceof UserDetails ? ((UserDetails) principal).getUsername() : principal.toString();
     }
-
 }
