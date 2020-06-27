@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zus
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zus?serverTimezone=UTC
+    username: root
+    password: toor
+  jooq:
+    sql-dialect: mysql
+
