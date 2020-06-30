@@ -31,8 +31,8 @@ public class FileTests extends InMemoryDaoTest {
     final Long id3 = fileService.insertIntoReturningId(url);
 
     //then
-    assertEquals(id1, Long.valueOf(1));
-    assertEquals(id2, Long.valueOf(2));
-    assertEquals(id3, Long.valueOf(3));
+    assertEquals(Long.valueOf(1), id1);
+    assertEquals(Long.valueOf(2), id2);
+    assertEquals(Long.valueOf(3), id3);
   }
 }

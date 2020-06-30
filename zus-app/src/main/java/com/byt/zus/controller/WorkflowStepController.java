@@ -13,9 +13,16 @@ public class WorkflowStepController {
 
   private final WorkflowStepService workflowStepService;
 
+  @PostMapping("/createNew")
+  public ResponseEntity<?> createWorkflow(@RequestParam long fileId) {
+
+    workflowStepService.createWorkflow(fileId);
+    return ResponseEntity.ok().build();
+  }
+
   @PostMapping("/updateStatus")
   public ResponseEntity<?> updateWorkflowStatus(@RequestParam long fileId,
-                                        @RequestParam String fileStatus) {
+                                                @RequestParam String fileStatus) {
 
     workflowStepService.updateWorkflowStatus(fileId, FileStatus.valueOf(fileStatus));
     return ResponseEntity.ok().build();

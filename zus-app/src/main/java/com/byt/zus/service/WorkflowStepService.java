@@ -5,6 +5,7 @@ import com.byt.zus.dao.FileStatus;
 import com.byt.zus.repository.WorkflowStepRepository;
 import io.vavr.collection.List;
 import lombok.RequiredArgsConstructor;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,15 +16,19 @@ public class WorkflowStepService {
 
   private final WorkflowStepRepository workflowStepRepository;
 
-  public void updateWorkflowStatus(final long fileId, final FileStatus fileStatus) {
+  public void createWorkflow(final long fileId) {
 
-    final Long userId = 0L;
-    workflowStepRepository.insert(new WorkflowStep(null, LocalDateTime.now(), fileStatus, fileId, userId));
+    final Long userId = 1L;
+    workflowStepRepository.insert(new WorkflowStep(null, LocalDateTime.now(), FileStatus.NEW, fileId, userId));
   }
 
-  public List<WorkflowStep> findAll() {
+  public void updateWorkflowStatus(final long fileId, final FileStatus fileStatus) {
 
-    return List.ofAll(workflowStepRepository.findAll());
+    final Long userId = 1L;
+    workflowStepRepository.findAllByFileId(fileId)
+                          .getOrElseThrow(() -> new NoSuchFieldError("wrong fileId"));
+
+    workflowStepRepository.insert(new WorkflowStep(null, LocalDateTime.now(), fileStatus, fileId, userId));
   }
 
   public List<WorkflowStep> findAllByFileId(final Long fileId) {
