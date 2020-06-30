@@ -15,7 +15,7 @@
     <name>zus</name>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <modules>
