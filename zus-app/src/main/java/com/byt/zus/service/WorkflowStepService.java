@@ -1,6 +1,6 @@
 package com.byt.zus.service;
 
-import com.balaur.zus.dao.tables.pojos.WorkflowStep;
+import com.byt.zus.dao.tables.pojos.WorkflowStep;
 import com.byt.zus.dao.FileStatus;
 import com.byt.zus.repository.WorkflowStepRepository;
 import io.vavr.collection.List;

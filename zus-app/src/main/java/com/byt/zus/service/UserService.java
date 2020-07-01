@@ -1,6 +1,6 @@
 package com.byt.zus.service;
 
-import com.balaur.zus.dao.tables.pojos.User;
+import com.byt.zus.dao.tables.pojos.User;
 import com.byt.zus.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

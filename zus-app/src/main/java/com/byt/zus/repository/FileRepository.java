@@ -1,11 +1,11 @@
 package com.byt.zus.repository;
 
-import com.balaur.zus.dao.tables.daos.FileDao;
-import com.balaur.zus.dao.tables.pojos.File;
-import com.balaur.zus.dao.tables.pojos.User;
+import com.byt.zus.dao.tables.daos.FileDao;
+import com.byt.zus.dao.tables.pojos.File;
+import com.byt.zus.dao.tables.pojos.User;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.zus.dao.tables.File.FILE;
+import static com.byt.zus.dao.tables.File.FILE;
 
 public class FileRepository extends FileDao {
 

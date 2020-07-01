@@ -1,10 +1,10 @@
 package com.byt.zus.repository;
 
-import com.balaur.zus.dao.tables.daos.UserDao;
-import com.balaur.zus.dao.tables.pojos.User;
+import com.byt.zus.dao.tables.daos.UserDao;
+import com.byt.zus.dao.tables.pojos.User;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.zus.dao.tables.User.USER;
+import static com.byt.zus.dao.tables.User.USER;
 
 public class UserRepository extends UserDao {
 

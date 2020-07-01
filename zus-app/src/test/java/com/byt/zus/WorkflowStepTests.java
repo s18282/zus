@@ -1,17 +1,14 @@
 package com.byt.zus;
 
-import com.balaur.zus.dao.tables.pojos.User;
-import com.balaur.zus.dao.tables.pojos.WorkflowStep;
 import com.byt.zus.dao.FileStatus;
 import com.byt.zus.dao.InMemoryDaoTest;
+import com.byt.zus.dao.tables.pojos.User;
+import com.byt.zus.dao.tables.pojos.WorkflowStep;
 import com.byt.zus.service.FileService;
 import com.byt.zus.service.UserService;
 import com.byt.zus.service.WorkflowStepService;
 import io.vavr.collection.List;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;

@@ -1,6 +1,5 @@
 package com.byt.zus;
 
-import com.balaur.zus.dao.tables.WorkflowStep;
 import com.byt.zus.repository.FileRepository;
 import com.byt.zus.repository.UserRepository;
 import com.byt.zus.repository.WorkflowStepRepository;

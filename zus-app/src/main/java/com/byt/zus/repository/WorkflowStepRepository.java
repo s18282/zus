@@ -1,11 +1,11 @@
 package com.byt.zus.repository;
 
-import com.balaur.zus.dao.tables.daos.WorkflowStepDao;
-import com.balaur.zus.dao.tables.pojos.WorkflowStep;
+import com.byt.zus.dao.tables.daos.WorkflowStepDao;
+import com.byt.zus.dao.tables.pojos.WorkflowStep;
 import io.vavr.collection.List;
 import org.jooq.impl.DefaultDSLContext;
 
-import static com.balaur.zus.dao.tables.WorkflowStep.WORKFLOW_STEP;
+import static com.byt.zus.dao.tables.WorkflowStep.WORKFLOW_STEP;
 
 public class WorkflowStepRepository extends WorkflowStepDao {
 
