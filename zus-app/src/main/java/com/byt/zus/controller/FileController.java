@@ -3,10 +3,9 @@ package com.byt.zus.controller;
 import com.byt.zus.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "rest/file")
@@ -19,6 +18,20 @@ public class FileController {
   public ResponseEntity<?> insertFileReturningId(@RequestParam String url) {
 
     return ResponseEntity.ok(fileService.insertIntoReturningId(url));
+  }
+
+  //Mariusz
+  @GetMapping("/getAll")
+  public ResponseEntity<?> getAllFiles(){
+
+    return ResponseEntity.ok(fileService.getAllFiles());
+  }
+
+  //Mariusz
+  @PostMapping("/changeUrl")
+  public ResponseEntity<?> changeUrl(@RequestParam String oldUrl, @RequestParam String newUrl){
+
+    return ResponseEntity.ok(fileService.changeUrl);
   }
 
 }
