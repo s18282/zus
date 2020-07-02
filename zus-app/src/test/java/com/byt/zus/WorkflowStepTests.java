@@ -39,7 +39,7 @@ public class WorkflowStepTests extends InMemoryDaoTest {
 
     //given
     final Long file_id = fileService.insertIntoReturningId("example_url");
-    userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
+    userService.insertIntoReturningId(new User(2L, "Janusz", "Krzak", true, UserStatus.USER));
 
     //when
     workflowStepService.createWorkflow(file_id);
@@ -54,7 +54,7 @@ public class WorkflowStepTests extends InMemoryDaoTest {
 
     //given
     final Long file_id = fileService.insertIntoReturningId("example_url");
-    final Long user_id = userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
+    final Long user_id = userService.insertIntoReturningId(new User(2L, "Janusz", "Krzak", true, UserStatus.USER));
 
     //when
     workflowStepService.createWorkflow(file_id);

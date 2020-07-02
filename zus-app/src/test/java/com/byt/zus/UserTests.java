@@ -31,10 +31,10 @@ public class UserTests extends InMemoryDaoTest {
     //given
     var username = "Marian";
     var password = "Paździoch";
-    var id = 1L;
+    var id = 2L;
 
     //when
-    userService.insertIntoReturningId(new User(null, username, password, true, UserStatus.USER));
+    userService.insertIntoReturningId(new User(id, username, password, true, UserStatus.USER));
     long userId = userService.loginReturningId(new User(null, username, password, true, UserStatus.USER));
 
     //then

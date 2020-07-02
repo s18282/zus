@@ -21,10 +21,10 @@ public class UserRepository extends UserDao {
 
   public Optional<User> findByName(String username) {
 
-    return Optional.ofNullable((User) dsl.select()
+    return Optional.ofNullable(dsl.select()
             .from(USER)
             .where(USER.NAME.eq(username))
-            .fetchInto(User.class));
+            .fetchOneInto(User.class));
   }
 
   public Long insertIntoReturningId(final User user) {
