@@ -43,18 +43,30 @@ public class FileTests extends InMemoryDaoTest {
   @Test
   public void getAll() {
 
-      //before
-//      assertEquals(fileService.getAllFiles().size(), 0);
-
       //given
       final String url = "example_url";
 
       //when
-      fileService.insertIntoReturningId(url);
-      fileService.insertIntoReturningId(url);
-      fileService.insertIntoReturningId(url);
+      fileService.testInsert(url);
+      fileService.testInsert(url);
+      fileService.testInsert(url);
 
       //then
       assertEquals(fileService.getAllFiles().size(), 3);
+  }
+
+  @Test
+  public void changeUrl() {
+
+      //given
+      final String url = "example_url";
+      final String changedUrl = "new_url";
+
+      //when
+      final Long id = fileService.insertIntoReturningId(url);
+
+      //then
+      fileService.changeUrl(url, changedUrl);
+      assertEquals(fileService.getUrlFromId(id), changedUrl);
   }
 }
