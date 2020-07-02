@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.event.annotation.AfterTestClass;
+import org.springframework.test.context.event.annotation.AfterTestMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -36,5 +38,23 @@ public class FileTests extends InMemoryDaoTest {
     assertEquals(Long.valueOf(1), id1);
     assertEquals(Long.valueOf(2), id2);
     assertEquals(Long.valueOf(3), id3);
+  }
+
+  @Test
+  public void getAll() {
+
+      //before
+//      assertEquals(fileService.getAllFiles().size(), 0);
+
+      //given
+      final String url = "example_url";
+
+      //when
+      fileService.insertIntoReturningId(url);
+      fileService.insertIntoReturningId(url);
+      fileService.insertIntoReturningId(url);
+
+      //then
+      assertEquals(fileService.getAllFiles().size(), 3);
   }
 }

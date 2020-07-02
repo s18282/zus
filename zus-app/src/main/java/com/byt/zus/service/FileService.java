@@ -17,4 +17,14 @@ public class FileService {
 
     return fileRepository.insertIntoReturningId(new File(null, url));
   }
+
+  public List<String> getAllFiles(){
+
+    return fileRepository.getAll();
+  }
+
+  public boolean changeUrl(final String oldUrl, final String newUrl){
+
+    return fileRepository.changeUrl(oldUrl, newUrl);
+  }
 }
