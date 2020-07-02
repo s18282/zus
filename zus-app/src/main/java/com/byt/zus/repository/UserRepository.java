@@ -4,6 +4,8 @@ import com.byt.zus.dao.tables.daos.UserDao;
 import com.byt.zus.dao.tables.pojos.User;
 import org.jooq.impl.DefaultDSLContext;
 
+import java.util.Optional;
+
 import static com.byt.zus.dao.tables.User.USER;
 
 public class UserRepository extends UserDao {
@@ -14,6 +16,14 @@ public class UserRepository extends UserDao {
 
     super(dsl.configuration());
     this.dsl = dsl;
+  }
+
+  public Optional<User> findByName(String username) {
+
+    return Optional.ofNullable((User) dsl.select()
+            .from(USER)
+            .where(USER.NAME.eq(username))
+            .fetchInto(User.class));
   }
 
   public Long insertIntoReturningId(final User user) {

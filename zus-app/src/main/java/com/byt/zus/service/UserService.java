@@ -2,9 +2,11 @@ package com.byt.zus.service;
 
 import com.byt.zus.dao.tables.pojos.User;
 import com.byt.zus.repository.UserRepository;
+import lombok.var;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -19,6 +21,19 @@ public class UserService {
   public Long insertIntoReturningId(final User user) {
 
     return userRepository.insertIntoReturningId(user);
+  }
+
+  public Long loginReturningId(final User user) {
+
+    var userOptional = userRepository.findByName(user.getName());
+
+    if (userOptional.isPresent()) {
+      var u = userOptional.get();
+      if (u.getPassword().equals(user.getPassword())) {
+        return u.getId();
+      }
+    }
+    return -1L;
   }
 
   public List<User> findAll() {
