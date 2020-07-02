@@ -1,6 +1,7 @@
 package com.byt.zus;
 
 import com.byt.zus.dao.InMemoryDaoTest;
+import com.byt.zus.dao.UserStatus;
 import com.byt.zus.dao.tables.pojos.User;
 import com.byt.zus.service.UserService;
 import lombok.var;
@@ -33,8 +34,8 @@ public class UserTests extends InMemoryDaoTest {
         var id = 1L;
 
         //when
-        userService.insertIntoReturningId(new User(null, username, password, true));
-        long userId = userService.loginReturningId(new User(null, username, password, true));
+        userService.insertIntoReturningId(new User(null, username, password, true, UserStatus.USER));
+        long userId = userService.loginReturningId(new User(null, username, password, true, UserStatus.USER));
 
         //then
         assertEquals(id, userId);

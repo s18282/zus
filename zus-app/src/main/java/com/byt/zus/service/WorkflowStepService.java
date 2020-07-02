@@ -21,9 +21,8 @@ public class WorkflowStepService {
     workflowStepRepository.insert(new WorkflowStep(null, LocalDateTime.now(), FileStatus.NEW, fileId, userId));
   }
 
-  public void updateWorkflowStatus(final long fileId, final FileStatus fileStatus) {
+  public void updateWorkflowStatus(final long userId, final long fileId, final FileStatus fileStatus) {
 
-    final Long userId = 1L;
     workflowStepRepository.findAllByFileId(fileId)
                           .getOrElseThrow(() -> new NoSuchFieldError("wrong fileId"));
 

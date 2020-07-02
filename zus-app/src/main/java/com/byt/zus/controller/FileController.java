@@ -17,4 +17,18 @@ public class FileController {
 
     return ResponseEntity.ok(fileService.insertIntoReturningId(url));
   }
+
+  @GetMapping("/getAllFilesUri")
+  public ResponseEntity<?> getAllFilesUri(){
+
+    return ResponseEntity.ok(fileService.getAllFilesUri());
+  }
+
+  @PutMapping("/updateFile")
+  public ResponseEntity<?> updateFile(@RequestParam Long id,
+                                      @RequestParam String newUrl){
+
+    return ResponseEntity.ok(fileService.updateFile(id, newUrl));
+  }
+
 }
