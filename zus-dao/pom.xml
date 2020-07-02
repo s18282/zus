@@ -93,6 +93,12 @@
                       <includeExpression>^.*(workflow_step)\.file_status</includeExpression>
                       <includeTypes>.*</includeTypes>
                     </forcedType>
+                    <forcedType>
+                      <userType>com.byt.zus.dao.UserStatus</userType>
+                      <enumConverter>true</enumConverter>
+                      <includeExpression>^.*(user)\.user_status</includeExpression>
+                      <includeTypes>.*</includeTypes>
+                    </forcedType>
                   </forcedTypes>
                 </database>
                 <generate>

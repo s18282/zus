@@ -2,6 +2,7 @@ package com.byt.zus;
 
 import com.byt.zus.dao.FileStatus;
 import com.byt.zus.dao.InMemoryDaoTest;
+import com.byt.zus.dao.UserStatus;
 import com.byt.zus.dao.tables.pojos.User;
 import com.byt.zus.dao.tables.pojos.WorkflowStep;
 import com.byt.zus.service.FileService;
@@ -38,7 +39,7 @@ public class WorkflowStepTests extends InMemoryDaoTest {
 
     //given
     final Long file_id  = fileService.insertIntoReturningId("example_url");
-    userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true));
+    userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
 
     //when
     workflowStepService.createWorkflow(file_id);
@@ -54,11 +55,11 @@ public class WorkflowStepTests extends InMemoryDaoTest {
 
     //given
     final Long file_id  = fileService.insertIntoReturningId("example_url");
-    userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true));
+    final Long user_id =  userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
 
     //when
     workflowStepService.createWorkflow(file_id);
-    workflowStepService.updateWorkflowStatus(file_id, FileStatus.PENDING);
+    workflowStepService.updateWorkflowStatus(user_id, file_id, FileStatus.PENDING);
 
     //then
     List<WorkflowStep> workflowStep = workflowStepService.findAllByFileId(file_id);

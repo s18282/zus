@@ -5,8 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(path = "rest/file")
 @RequiredArgsConstructor
@@ -20,16 +18,17 @@ public class FileController {
     return ResponseEntity.ok(fileService.insertIntoReturningId(url));
   }
 
-  @GetMapping("/getAll")
-  public ResponseEntity<?> getAllFiles(){
+  @GetMapping("/getAllFilesUri")
+  public ResponseEntity<?> getAllFilesUri(){
 
-    return ResponseEntity.ok(fileService.getAllFiles());
+    return ResponseEntity.ok(fileService.getAllFilesUri());
   }
 
-  @PostMapping("/changeUrl")
-  public ResponseEntity<?> changeUrl(@RequestParam String oldUrl, @RequestParam String newUrl){
+  @PutMapping("/updateFile")
+  public ResponseEntity<?> updateFile(@RequestParam Long id,
+                                      @RequestParam String newUrl){
 
-    return ResponseEntity.ok(fileService.changeUrl(oldUrl, newUrl));
+    return ResponseEntity.ok(fileService.updateFile(id, newUrl));
   }
 
 }

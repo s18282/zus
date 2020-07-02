@@ -1,6 +1,7 @@
 package com.byt.zus;
 
 import com.byt.zus.dao.InMemoryDaoTest;
+import com.byt.zus.dao.tables.pojos.File;
 import com.byt.zus.service.FileService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.event.annotation.AfterTestClass;
-import org.springframework.test.context.event.annotation.AfterTestMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -41,32 +40,33 @@ public class FileTests extends InMemoryDaoTest {
   }
 
   @Test
-  public void getAll() {
+  public void getAllFilesUri() {
 
-      //given
-      final String url = "example_url";
+    //given
+    final String url = "example_url";
 
-      //when
-      fileService.testInsert(url);
-      fileService.testInsert(url);
-      fileService.testInsert(url);
+    //when
+    fileService.insertIntoReturningId(url);
+    fileService.insertIntoReturningId(url);
+    fileService.insertIntoReturningId(url);
 
-      //then
-      assertEquals(fileService.getAllFiles().size(), 3);
+    //then
+    assertEquals(3, fileService.getAllFilesUri().size());
   }
 
   @Test
-  public void changeUrl() {
+  public void updateFile() {
 
-      //given
-      final String url = "example_url";
-      final String changedUrl = "new_url";
+    //given
+    final String url = "example_url";
+    final String newUrl = "new_url";
 
-      //when
-      final Long id = fileService.insertIntoReturningId(url);
+    //when
+    final Long id = fileService.insertIntoReturningId(url);
 
-      //then
-      fileService.changeUrl(url, changedUrl);
-      assertEquals(fileService.getUrlFromId(id), changedUrl);
+    //then
+    fileService.updateFile(id, newUrl);
+    final File file = fileService.getFileById(id);
+    assertEquals(newUrl, file.getUrl());
   }
 }

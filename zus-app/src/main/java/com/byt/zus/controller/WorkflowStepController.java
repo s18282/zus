@@ -21,10 +21,11 @@ public class WorkflowStepController {
   }
 
   @PostMapping("/updateStatus")
-  public ResponseEntity<?> updateWorkflowStatus(@RequestParam long fileId,
+  public ResponseEntity<?> updateWorkflowStatus(@RequestParam long userId,
+                                                @RequestParam long fileId,
                                                 @RequestParam String fileStatus) {
 
-    workflowStepService.updateWorkflowStatus(fileId, FileStatus.valueOf(fileStatus));
+    workflowStepService.updateWorkflowStatus(userId, fileId, FileStatus.valueOf(fileStatus));
     return ResponseEntity.ok().build();
   }
 }

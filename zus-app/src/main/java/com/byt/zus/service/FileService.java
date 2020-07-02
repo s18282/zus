@@ -13,28 +13,22 @@ public class FileService {
 
   private final FileRepository fileRepository;
 
-  public void testInsert(final String url){
-
-    fileRepository.testInsert(new File(null, url));
-  }
-
   public Long insertIntoReturningId(final String url) {
 
     return fileRepository.insertIntoReturningId(new File(null, url));
   }
 
-  public List<String> getAllFiles(){
+  public List<String> getAllFilesUri(){
 
-    return fileRepository.getAll();
+    return fileRepository.getAllFilesUri();
   }
 
-  public boolean changeUrl(final String oldUrl, final String newUrl){
+  public boolean updateFile(final Long id, final String newUrl){
 
-    return fileRepository.changeUrl(oldUrl, newUrl);
+    return fileRepository.updateFile(id, newUrl);
   }
 
-  public String getUrlFromId(final Long l) {
-
-    return fileRepository.getUrlFromId(l);
+  public File getFileById(final Long id) {
+    return fileRepository.fetchOneById(id);
   }
 }

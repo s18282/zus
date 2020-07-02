@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static com.byt.zus.dao.UserStatus.USER;
+
 @Controller
 public class UserController {
 
@@ -21,6 +23,6 @@ public class UserController {
   public ResponseEntity<?> insertFileReturningId(@RequestParam String name,
                                                  @RequestParam String password) {
 
-    return ResponseEntity.ok(userService.insertIntoReturningId(new User(null, name, password, true)));
+    return ResponseEntity.ok(userService.insertIntoReturningId(new User(null, name, password, true, USER)));
   }
 }
