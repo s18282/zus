@@ -1,10 +1,10 @@
 package com.byt.zus;
 
-import com.byt.zus.dao.InMemoryDaoTest;
 import com.byt.zus.dao.UserStatus;
 import com.byt.zus.dao.tables.pojos.User;
+import com.byt.zus.service.FileService;
 import com.byt.zus.service.UserService;
-import lombok.var;
+import com.byt.zus.service.UserStatusService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,30 +14,31 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @ContextConfiguration(classes = ZusTestConfiguration.class)
 @RunWith(SpringRunner.class)
 @ActiveProfiles({"test"})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class UserTests extends InMemoryDaoTest {
+public class UserStatusTests {
 
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private UserStatusService userStatusService;
+
   @Test
-  public void shouldCreateUserAndLoginSuccessfully() {
+  public void changeUserStatus() {
 
     //given
-    var username = "Marian";
-    var password = "Paździoch";
-    var id = 1L;
+    final User adminUser = userService.findById(1);
+    final long newUserId = userService.insertIntoReturningId(new User(2L, "Andrzej", "Kowalski", true, UserStatus.USER));
 
     //when
-    userService.insertIntoReturningId(new User(null, username, password, true, UserStatus.USER));
-    long userId = userService.loginReturningId(new User(null, username, password, true, UserStatus.USER));
+    userStatusService.updateUserStatus(1L, newUserId, UserStatus.EDITOR);
 
     //then
-    assertEquals(id, userId);
+    final User changedUser = userService.findById(2L);
+    assertEquals(UserStatus.EDITOR, changedUser.getUserStatus());
   }
 }

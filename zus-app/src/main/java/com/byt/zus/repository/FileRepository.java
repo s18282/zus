@@ -19,12 +19,6 @@ public class FileRepository extends FileDao {
     this.dsl = dsl;
   }
 
-  public void testInsert(final File file) {
-
-    dsl.insertInto(FILE)
-       .set(dsl.newRecord(FILE, file));
-  }
-
   public Long insertIntoReturningId(final File file) {
 
     return dsl.insertInto(FILE)

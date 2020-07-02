@@ -38,7 +38,7 @@ public class WorkflowStepTests extends InMemoryDaoTest {
   public void shouldCreateWorkflowStep() {
 
     //given
-    final Long file_id  = fileService.insertIntoReturningId("example_url");
+    final Long file_id = fileService.insertIntoReturningId("example_url");
     userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
 
     //when
@@ -49,13 +49,12 @@ public class WorkflowStepTests extends InMemoryDaoTest {
     assertEquals(FileStatus.NEW, workflowStep.get().getFileStatus());
   }
 
-
   @Test
   public void shouldUpdateWorkflowStatus() {
 
     //given
-    final Long file_id  = fileService.insertIntoReturningId("example_url");
-    final Long user_id =  userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
+    final Long file_id = fileService.insertIntoReturningId("example_url");
+    final Long user_id = userService.insertIntoReturningId(new User(1L, "Janusz", "Krzak", true, UserStatus.USER));
 
     //when
     workflowStepService.createWorkflow(file_id);
@@ -66,5 +65,4 @@ public class WorkflowStepTests extends InMemoryDaoTest {
     assertEquals(FileStatus.NEW, workflowStep.get(0).getFileStatus());
     assertEquals(FileStatus.PENDING, workflowStep.get(1).getFileStatus());
   }
-
 }

@@ -6,7 +6,6 @@ import lombok.var;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -37,6 +36,12 @@ public class UserService {
   }
 
   public List<User> findAll() {
+
     return userRepository.findAll();
+  }
+
+  public User findById(final long id) {
+
+    return userRepository.findById(id);
   }
 }

@@ -1,10 +1,12 @@
 package com.byt.zus;
 
+import com.byt.zus.dao.UserStatus;
 import com.byt.zus.repository.FileRepository;
 import com.byt.zus.repository.UserRepository;
 import com.byt.zus.repository.WorkflowStepRepository;
 import com.byt.zus.service.FileService;
 import com.byt.zus.service.UserService;
+import com.byt.zus.service.UserStatusService;
 import com.byt.zus.service.WorkflowStepService;
 import org.jooq.impl.DefaultDSLContext;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
@@ -42,6 +44,11 @@ public class ZusTestConfiguration {
     return new UserService(userRepository);
   }
 
+  @Bean
+  UserStatusService userStatusService(final UserRepository userRepository) {
+
+    return new UserStatusService(userRepository);
+  }
 
   @Bean
   WorkflowStepRepository workflowStepRepository(final DefaultDSLContext dsl) {
@@ -54,5 +61,4 @@ public class ZusTestConfiguration {
 
     return new WorkflowStepService(workflowStepRepository);
   }
-
 }
