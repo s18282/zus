@@ -20,18 +20,16 @@ public class FileController {
     return ResponseEntity.ok(fileService.insertIntoReturningId(url));
   }
 
-  //Mariusz
   @GetMapping("/getAll")
   public ResponseEntity<?> getAllFiles(){
 
     return ResponseEntity.ok(fileService.getAllFiles());
   }
 
-  //Mariusz
   @PostMapping("/changeUrl")
   public ResponseEntity<?> changeUrl(@RequestParam String oldUrl, @RequestParam String newUrl){
 
-    return ResponseEntity.ok(fileService.changeUrl);
+    return ResponseEntity.ok(fileService.changeUrl(oldUrl, newUrl));
   }
 
 }

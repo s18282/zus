@@ -18,15 +18,13 @@ public class FileService {
     return fileRepository.insertIntoReturningId(new File(null, url));
   }
 
-  //Mariusz
   public List<String> getAllFiles(){
 
     return fileRepository.getAll();
   }
 
-  //Mariusz
-  public void changeUrl(final String oldUrl, final String newUrl){
+  public boolean changeUrl(final String oldUrl, final String newUrl){
 
-
+    return fileRepository.changeUrl(oldUrl, newUrl);
   }
 }
